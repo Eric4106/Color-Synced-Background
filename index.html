@@ -1,0 +1,63 @@
+<HTML>
+<head>
+	<style>
+		html {
+			background-color: #fd8;
+			overflow: hidden;
+		}
+		
+		#canvas {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}		
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+	<script type="text/javascript">
+		var colorSpeed;
+		var date;
+		//var fRate;
+	
+		function setup() {
+			var canvas = createCanvas(window.innerWidth, window.innerWidth);
+			canvas.parent("canvas");
+			
+			document.getElementById("canvas").onwheel = function(event){
+				event.preventDefault();
+			};
+	
+			document.addEventListener("contextmenu",
+				function(event) {
+					if (event.target.nodeName === "CANVAS") {
+						event.preventDefault();
+					}
+				}
+			, false);
+			
+			
+			//fRate = 25;
+			//frameRate(fRate);
+			
+			colorSpeed = 2000;//# of seconds between each cycle
+		}
+	
+		function draw() {
+			date = new Date();
+			if (colorSpeed != null) {
+				colorMode(HSB, colorSpeed);
+				background((date.getTime()) % colorSpeed, colorSpeed, colorSpeed);
+			}
+		}
+	
+		function getHue() {
+			var off = date.getTime() *.001 * fRate;
+			var hue = frameCount + off;
+			hue %= colorSpeed;
+			return hue;
+		}
+	</script>
+</head>
+	<body>
+		<div id="canvas"></div>
+	</body>
+</HTML>

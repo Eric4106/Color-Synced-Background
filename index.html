@@ -16,7 +16,6 @@
 	<script type="text/javascript">
 		var colorSpeed;
 		var date;
-		//var fRate;
 	
 		function setup() {
 			var canvas = createCanvas(window.innerWidth, window.innerWidth);
@@ -34,10 +33,6 @@
 				}
 			, false);
 			
-			
-			//fRate = 25;
-			//frameRate(fRate);
-			
 			colorSpeed = 2000;//# of seconds between each cycle
 		}
 	
@@ -47,13 +42,6 @@
 				colorMode(HSB, colorSpeed);
 				background((date.getTime()) % colorSpeed, colorSpeed, colorSpeed);
 			}
-		}
-	
-		function getHue() {
-			var off = date.getTime() *.001 * fRate;
-			var hue = frameCount + off;
-			hue %= colorSpeed;
-			return hue;
 		}
 	</script>
 </head>
